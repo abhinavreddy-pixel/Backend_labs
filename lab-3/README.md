@@ -1,9 +1,17 @@
 # Lab 3: REST API, Query Parameters, Validation, and Debugging
 
 **Subject :** Backend Development Fundamentals
+
+
 **Year/Term:** Year II, Term II
+
+
 **University:**Aurora Deemed to be University
+
+
 **Faculty:** Mr. Joel Prashanth D
+
+
 
 ## 1. Student details
 
