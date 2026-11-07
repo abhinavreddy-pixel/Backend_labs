@@ -1,0 +1,83 @@
+@baseUrl = http://localhost:3000
+
+### Health check
+GET {{baseUrl}}/
+
+### Create a book (expect 201)
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "The Hobbit",
+  "author": "J. R. R. Tolkien",
+  "price": 15.99
+}
+
+### Create another book (expect 201)
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "price": 10.5
+}
+
+### List books (expect 200)
+GET {{baseUrl}}/books
+
+### Search by partial title (expect 200)
+GET {{baseUrl}}/books?search_q=Hobbit
+
+### Sort by price, highest first (expect 200)
+GET {{baseUrl}}/books?order_by=price&order=DESC
+
+### Paginate results (expect 200)
+GET {{baseUrl}}/books?limit=1&offset=0
+
+### Filter by price range (expect 200)
+GET {{baseUrl}}/books?min_price=10&max_price=20
+
+### Invalid sort column (expect 400)
+GET {{baseUrl}}/books?order_by=publisher
+
+### Invalid book: missing title and non-numeric price (expect 400)
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "author": "Unknown Author",
+  "price": "abc"
+}
+
+### Get book with ID 1 (expect 200 after creating the first book)
+GET {{baseUrl}}/books/1
+
+### Get missing book (expect 404)
+GET {{baseUrl}}/books/99999
+
+### Update book with ID 1 (expect 200)
+PUT {{baseUrl}}/books/1
+Content-Type: application/json
+
+{
+  "title": "The Hobbit - Updated",
+  "author": "J. R. R. Tolkien",
+  "price": 18.5
+}
+
+### Update missing book (expect 404)
+PUT {{baseUrl}}/books/99999
+Content-Type: application/json
+
+{
+  "title": "Missing Book",
+  "author": "Nobody",
+  "price": 5
+}
+
+### Delete book with ID 1 (expect 200)
+DELETE {{baseUrl}}/books/1
+
+### Delete missing book (expect 404)
+DELETE {{baseUrl}}/books/99999
