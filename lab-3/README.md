@@ -21,7 +21,7 @@
 
 ## 2. Live link
 
-**Live link:** Not deployed
+**Live link:** [https://backend-labs-lab3.onrender.com](https://backend-labs-lab3.onrender.com)
 
 Run the API locally at [http://localhost:3000](http://localhost:3000).
 
